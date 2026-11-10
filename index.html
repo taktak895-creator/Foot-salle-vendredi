@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Footsale Vendredi — Classements & ELO</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6f3;--card:#fff;--tx:#10201a;--mu:#5d6b64;--ac:#0a9d5c;--bd:#dde4df;--w:#0a9d5c;--l:#d64545;--rd:#e08a1e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#0b1310;--card:#131f1a;--tx:#eaf3ee;--mu:#8fa398;--ac:#2ee59d;--bd:#223229;--w:#2ee59d;--l:#ff6b6b}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+.w{max-width:960px;margin:0 auto;padding:0 16px 48px}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;flex-wrap:wrap;gap:8px}
+.logo b{font-size:18px}.logo small{display:block;color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+nav{display:flex;gap:6px;overflow-x:auto}
+nav a{padding:6px 12px;border-radius:99px;color:var(--mu);text-decoration:none;font-size:13px;white-space:nowrap}
+nav a.on{background:var(--ac);color:#04150e;font-weight:600}
+.eyebrow{color:var(--ac);font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+h1{font-size:clamp(30px,7vw,52px);line-height:1.05;margin:6px 0 10px}h1 em{color:var(--ac)}
+h2{font-size:24px;margin:4px 0 2px}.sub{color:var(--mu);margin:0 0 14px;font-size:13px}
+section{margin-top:36px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}
+.last{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.last .t{font-weight:700;text-align:center;flex:1}.last .sc{font-size:34px;font-weight:800;white-space:nowrap}
+.badge{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--bd);font-weight:700;font-size:12px;margin-bottom:4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.g2{grid-template-columns:1fr}}
+.elo{font-size:40px;font-weight:800;color:var(--ac);line-height:1}
+.d{font-size:12px;color:var(--mu)}.row{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:var(--mu)}.row b{color:var(--tx)}
+.f{display:inline-flex;gap:3px;vertical-align:middle}
+.f i{width:16px;height:16px;border-radius:4px;font:700 9px/16px system-ui;font-style:normal;text-align:center;color:#fff}
+.f .V{background:var(--w)}.f .D{background:var(--l)}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:16px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap}
+th{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border-bottom:0}td.n,th.n{text-align:right}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;background:var(--bd)}.tag.F{color:var(--ac)}.tag.R{color:var(--rd)}
+.m{margin-bottom:10px}.mh{display:flex;justify-content:space-between;color:var(--mu);font-size:12px}
+.ms{display:flex;justify-content:center;gap:12px;align-items:baseline;margin:6px 0;font-weight:800;font-size:22px}
+.ms small{font-size:12px;font-weight:600;color:var(--mu)}
+.sl{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px}.sl b{display:block;margin-bottom:2px}.sl div{color:var(--mu)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:16px}
+.fc{container-type:inline-size;aspect-ratio:.7;position:relative;clip-path:polygon(50% 0,90% 5%,100% 11%,100% 80%,50% 100%,0 80%,0 11%,10% 5%);background:linear-gradient(160deg,var(--c1),var(--c2));--c1:#f3dc8f;--c2:#b4852a;--t:#3b2a06}
+.fc.s{--c1:#eceff3;--c2:#8d97a4;--t:#1d2730}.fc.b{--c1:#e0a97c;--c2:#8a5a2b;--t:#2b1606}.fc.h{--c1:#245090;--c2:#06122a;--t:#ffe7a0}
+.fc .in{position:absolute;inset:1.5cqw;clip-path:polygon(50% 0,90% 5%,100% 11%,100% 80%,50% 100%,0 80%,0 11%,10% 5%);background:radial-gradient(circle at 72% 22%,#fff7,transparent 55%),linear-gradient(160deg,var(--c1),var(--c2));color:var(--t);padding:13cqw 11cqw 0;display:flex;flex-direction:column}
+.fc .lf{position:absolute;left:15cqw;top:15cqw;display:flex;flex-direction:column;align-items:center;line-height:1}
+.fc .lf b{font-size:25cqw;font-weight:800}.fc .lf span{font-size:9cqw;font-weight:700;margin:1cqw 0 3cqw}
+.fc .bd{font:800 5cqw/1 system-ui;font-style:normal;background:var(--t);color:var(--c1);padding:2.2cqw 2.8cqw;border-radius:99px}
+.fc .av{align-self:flex-end;margin-right:5cqw;width:46cqw;height:46cqw;display:grid;place-items:center;font-size:34cqw;font-weight:800;border-radius:50%;background:radial-gradient(circle,#fff6,transparent 70%)}
+.fc h3{margin:2cqw 0 0;text-align:center;text-transform:uppercase;font-size:10cqw;letter-spacing:.04em;padding-bottom:2cqw;border-bottom:.6cqw solid var(--t)}
+.fc .st{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:.5cqw 8cqw;margin:3cqw auto 0;font-size:7.5cqw;font-weight:600}
+.fc .st span{display:flex;gap:1.5cqw;align-items:baseline}.fc .st b{font-size:9cqw;font-weight:800}
+.fc .gm{text-align:center;margin-top:3cqw;font-size:5cqw;opacity:.8}
+.cards2{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.cards2 h3{margin:0 0 8px;font-size:17px}.cards2 .l{font-size:13px;color:var(--mu);margin-top:4px}.cards2 .l b{color:var(--tx)}.q{font-size:15px;font-style:italic}
+.sel{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}input{background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;font-size:14px;min-width:0}.rw{display:flex;gap:6px;margin:6px 0}.rw input:first-child{flex:1}.rw input+input{width:70px}.bt{background:var(--bd);color:var(--tx);border:0;border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer}.bt.pr{background:var(--ac);color:#04150e;font-weight:700}select{background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;font-size:14px}.tw0{overflow-x:auto}[hidden]{display:none!important}svg text{fill:var(--mu);font:11px system-ui}
+footer{margin-top:40px;color:var(--mu);font-size:12px;text-align:center}
+</style></head><body><div class="w">
+<header><div class="logo"><b>Footsale Vendredi</b><small>Stats officielles · Saison 2026</small></div>
+<nav><a href="#classements" data-p="classements">Classements</a><a href="#stats" data-p="stats">Stats</a><a href="#conf" data-p="conf">Conf de presse</a><a href="#performances" data-p="performances">Performances</a><a href="#admin" data-p="admin" id="na" hidden>Admin</a></nav></header>
+
+<div id="pg-classements"><div class="eyebrow">Tableau de bord</div>
+<h1>Le terrain <em>parle en chiffres.</em></h1>
+<p class="sub" style="font-size:15px"><span id="nm">16</span> matchs, un duel sans relâche. Retrouvez les forces en présence et les joueurs qui font trembler les filets.</p>
+<div class="card"><div class="eyebrow">Dernier match · J<span id="lj">16</span></div>
+<div class="last"><div class="t"><span class="badge">FF</span><br>Fessao</div><div class="sc" id="lsc">27 — 20</div><div class="t"><span class="badge">RDM</span><br>RDM</div></div>
+<div class="d" style="text-align:center;margin-top:6px">Match terminé</div></div>
+
+<section><div class="eyebrow">Rapport de force</div><h2>Classement ELO</h2><p class="sub">Indice initial : 1000 · Facteur K : 32</p>
+<div class="g2">
+<div class="card"><div class="eyebrow">Leader · #1</div><h3 style="margin:4px 0 10px">FC Fessao</h3><div class="elo" id="ef">1084</div><div class="d" id="edf">+84 pts</div>
+<div style="margin:10px 0"><span id="ff"></span></div>
+<div class="row"><span>Buts <b id="bf"></b></span><span>Victoires <b id="vf"></b></span><span>Défaites <b id="df"></b></span></div></div>
+<div class="card"><div class="eyebrow" style="color:var(--rd)">Challenger · #2</div><h3 style="margin:4px 0 10px">FC RDM</h3><div class="elo" style="color:var(--rd)" id="er">916</div><div class="d" id="edr">-84 pts</div>
+<div style="margin:10px 0"><span id="fr"></span></div>
+<div class="row"><span>Buts <b id="br"></b></span><span>Victoires <b id="vr"></b></span><span>Défaites <b id="dr"></b></span></div></div>
+</div></section>
+
+<section><div class="eyebrow">Les finisseurs</div><h2>Classement des buteurs</h2><p class="sub" id="lead"></p>
+<div class="tw"><table><thead><tr><th>Rang</th><th>Joueur</th><th>Équipe</th><th class="n">Matchs</th><th class="n">Buts</th><th class="n">B/M</th><th class="n">ELO</th><th>Forme · 4 matchs</th></tr></thead><tbody id="sc"></tbody></table></div>
+<p class="d" id="cnt"></p></section>
+
+<section><div class="eyebrow">Feuilles de match</div><h2>Détail des matchs</h2><p class="sub">Compos et buteurs de chaque journée</p><div id="ms"></div></section>
+
+<section><div class="eyebrow">Collection 2026</div><h2>Cartes des joueurs</h2><p class="sub">Notes calculées d'après le classement des buteurs : buts, ratio, ELO, matchs, forme et série</p><div class="cards" id="cd"></div></section>
+</div>
+<div id="pg-stats" hidden><div class="eyebrow">Face à face</div><h2>Stats</h2><p class="sub">Meilleur coéquipier (meilleur % de victoires ensemble) et meilleur adversaire (celui contre qui le joueur gagne le moins). Min. 2 matchs en commun, calcul d'après les buteurs listés par match.</p><div class="cards2" id="st"></div></div>
+<div id="pg-conf" hidden><div class="eyebrow">Après-match</div><h2>Conf de presse</h2><p class="sub">Les petites phrases de chaque joueur</p><div class="cards2" id="cf"></div></div>
+<div id="pg-performances" hidden><div class="eyebrow">Évolution</div><h2>Performances</h2><p class="sub">Buts cumulés au fil des journées</p><div class="card"><div class="sel"><label><span style="color:var(--ac)">●</span> <select id="pa"></select></label><label><span style="color:var(--rd)">●</span> <select id="pb"></select></label></div><div class="tw0"><svg id="ch" viewBox="0 0 600 270" width="100%"></svg></div><p class="d" id="pn"></p></div></div>
+<div id="pg-admin" hidden><div class="eyebrow">Espace admin</div><h2>Ajouter un match</h2><p class="sub">Classements, ELO, stats et graphiques se mettent à jour automatiquement après l'enregistrement. Les scores sont calculés d'après les buts si tu les laisses vides.</p>
+<div class="card"><div class="sel"><input id="aj" type="number" placeholder="Journée" style="width:100px"><input id="ad" placeholder="Date (ex. 13 nov.)"></div>
+<div class="g2"><div><b>FC Fessao</b> <input id="asf" type="number" min="0" placeholder="Score" style="width:80px"><div id="rf"></div><button class="bt" data-t="f">+ joueur</button></div>
+<div><b>FC RDM</b> <input id="asr" type="number" min="0" placeholder="Score" style="width:80px"><div id="rr"></div><button class="bt" data-t="r">+ joueur</button></div></div>
+<datalist id="dl"></datalist><p><button class="bt pr" id="sv">Enregistrer le match</button> <button class="bt" id="un">Annuler le dernier match</button></p><p class="d" id="am"></p></div></div>
+<footer>Footsale Vendredi · Saison 2026</footer></div>
+<script type="application/json" id="data">{"players":[["Taktak","F",16,106,1288,"VVVV",7,[97,92,90,78,86,28]],["Mika","R",14,79,1081,"DDDD",7,[95,88,76,52,88,54]],["Kevin","F",13,79,1235,"VVVV",6,[97,91,95,80,82,65]],["Omar","R",16,74,1066,"DDDD",7,[92,84,73,51,69,36]],["Nass","F",15,60,1195,"VVVV",6,[91,88,85,75,64,65]],["Fou","F",10,36,1122,"VVVV",4,[86,79,72,59,79,68]],["Alex","R",8,32,1028,"DDDD",4,[80,79,91,56,78,34]],["Karim","R",4,20,1035,"VVD",1,[82,80,74,45,77,66]],["Mouss","R",8,21,1004,"DDDD",4,[76,73,68,50,66,50]],["Mehdi","F",7,19,1077,"VDDV",1,[79,78,78,57,58,45]],["Hamza","R",12,19,983,"DDDD",6,[74,68,69,43,89,79]],["Dylan","R",2,16,1054,"VV",2,[90,86,97,60,66,41]],["Issam","F",8,14,1068,"VVVV",5,[76,74,82,49,84,63]],["Mustapha","R",3,13,1026,"DVD",1,[76,73,91,46,74,82]],["Ouanis","F",1,8,1057,"V",1,[88,81,85,63,57,51]],["Miguel","R",2,8,1022,"DD",2,[71,68,87,50,63,74]],["Moha","R",4,8,1002,"DVDD",2,[70,68,77,49,68,74]],["Nadir","F",1,6,1044,"V",1,[83,77,93,56,72,51]],["Yacine","R",1,5,1028,"D",1,[73,70,95,44,64,85]],["Fabien","R",1,4,1021,"D",1,[70,68,75,54,72,52]],["Mehdi DZ","R",1,4,1021,"D",1,[70,69,72,45,49,56]],["Julio","F",1,3,1025,"V",1,[76,71,62,47,61,57]],["Jeremy","F",3,6,1042,"VVV",3,[73,71,74,42,58,44]],["Nicolas","R",2,7,1031,"DD",2,[63,63,59,41,59,64]],["Ryad","F",1,1,1012,"D",1,[63,63,69,36,77,57]],["Invité","R",1,0,995,"D",1,[60,58,55,47,57,48]]],"matches":[[16,"6 nov.",27,20,"Kevin10,Taktak9,Nass5,Jeremy3,Issam0","Nicolas6,Omar6,Mika5,Hamza2,Mouss1"],[15,"30 oct.",22,19,"Kevin11,Taktak6,Jeremy2,Mehdi2,Nass1","Omar8,Mika5,Alex4,Hamza2,Invité1"],[14,"",21,15,"Nadir6,Taktak6,Kevin4,Nass4,Jeremy1","Mika6,Alex4,Fabien4,Hamza1,Omar1"],[13,"9 oct.",24,13,"Taktak13,Nass5,Julio3,Fou2,Issam1","Mouss5,Mika3,Hamza2,Omar2,Nicolas1"],[12,"2 oct.",22,20,"Ouanis8,Taktak5,Issam4,Kevin3,Fou2","Mika9,Yacine5,Omar4,Alex2,Moha1"],[11,"11 sept.",22,16,"Kevin6,Nass6,Fou4,Taktak4,Issam2","Alex6,Mika4,Omar3,Mouss2,Hamza1"],[10,"4 sept.",24,18,"Kevin10,Fou4,Nass4,Taktak4,Issam2","Karim6,Omar4,Mika3,Mouss3,Hamza2"],[9,"28 août",17,27,"Taktak8,Kevin5,Fou2,Issam1,Nass1","Dylan7,Mika7,Omar6,Mouss5,Hamza2"],[8,"21 août",24,25,"Taktak7,Kevin6,Nass5,Fou4,Mehdi1","Dylan9,Omar7,Karim5,Hamza1,Mouss1"],[7,"3 juil.",21,24,"Mehdi6,Taktak6,Nass5,Issam3,Kevin1","Omar8,Mika7,Alex5,Karim4,Hamza1"],[6,"19 juin",14,13,"Fou4,Mehdi4,Kevin3,Nass3,Taktak1","Mika6,Hamza2,Miguel2,Omar2,Alex1"],[5,"12 juin",34,20,"Fou9,Nass9,Taktak7,Kevin6,Mehdi3","Hamza6,Mehdi DZ4,Omar4,Moha3,Mustapha3"],[4,"5 juin",20,15,"Taktak10,Mehdi6,Kevin2,Nass2,Issam1","Alex5,Omar5,Miguel3,Hamza2,Mika1"],[3,"22 mai",10,21,"Taktak4,Issam3,Fou1,Nass1,Ryad1","Mika6,Mustapha6,Omar5,Moha4,Hamza1"],[2,"8 mai",28,17,"Kevin10,Fou7,Taktak6,Nass4,Issam1","Alex4,Mika4,Hamza3,Mouss3,Omar3"],[1,"1 mai",20,16,"Kevin5,Fou4,Nass4,Taktak4,Mehdi3","Mika6,Omar5,Mustapha3,Hamza1,Moha1"]],"prev":null}</script>
+<script>
+// nom, équipe, matchs, buts, elo, forme, série, [BU,TIR,VIT,PAS,PHY,DEF]
+const D=JSON.parse(document.getElementById("data").textContent),P=D.players;
+P.sort((a,b)=>b[3]-a[3]||b[3]/b[2]-a[3]/a[2]);
+// journée, date, score F, score R, buteurs F, buteurs R
+const M=D.matches;
+const $=id=>document.getElementById(id);
+const T={F:"FC Fessao",R:"FC RDM"};
+const form=(f)=>'<span class="f">'+[...f].map(c=>`<i class="${c}">${c}</i>`).join("")+"</span>";
+$("sc").innerHTML=P.map((p,i)=>{const last=p[5].slice(-1);
+const s=p[6]+(last=="V"?" victoire":" défaite")+(p[6]>1?"s":"")+" de suite";
+return `<tr><td>${i+1}</td><td><b>${p[0]}</b></td><td><span class="tag ${p[1]}">${T[p[1]]}</span></td><td class="n">${p[2]}</td><td class="n"><b>${p[3]}</b></td><td class="n">${(p[3]/p[2]).toFixed(2)}</td><td class="n">${p[4]}</td><td>${form(p[5])} <span class="d">${s}</span></td></tr>`}).join("");
+$("cnt").textContent=P.length+" joueurs classés · Mis à jour après la J"+M[0][0];
+const list=s=>s.split(",").map(x=>{const m=x.match(/^(.*?)(\d+)$/);return "<li>"+m[1]+(m[2]!=1?" ×"+m[2]:"")+"</li>"}).join("");
+$("ms").innerHTML=M.map(m=>{const w=m[2]>m[3]?"Fessao":"RDM";
+return `<div class="card m"><div class="mh"><span>Journée ${m[0]}${m[1]?" · "+m[1]:""}</span><span>${w} s'impose</span></div>
+<div class="ms"><small>FF</small>${m[2]} — ${m[3]}<small>RDM</small></div>
+<div class="sl"><div><b>FC Fessao</b><ul style="margin:0;padding-left:16px">${list(m[4])}</ul></div><div><b>FC RDM</b><ul style="margin:0;padding-left:16px">${list(m[5])}</ul></div></div></div>`}).join("");
+const N=P.length,LB=["BUT","B/M","ELO","MAT","FOR","SÉR"],sig=p=>(p[5].slice(-1)=="V"?1:-1)*p[6];
+const rk=f=>{const v=P.map(f);return v.map(x=>60+Math.round(39*(1-v.filter(y=>y>x).length/Math.max(1,N-1))))};
+const CS=[p=>p[3],p=>p[3]/p[2],p=>p[4],p=>p[2],p=>[...p[5]].filter(c=>c=="V").length/p[5].length+sig(p)/100,sig].map(rk);
+$("cd").innerHTML=P.map((p,i)=>{const o=99-Math.round(i*39/Math.max(1,N-1)),t=o>=90?"h":o>=80?"g":o>=70?"s":"b";
+return `<div class="fc ${t}"><div class="in"><div class="lf"><b>${o}</b><span>BU</span><i class="bd">${p[1]=="F"?"FF":"RDM"}</i></div><div class="av">${p[0][0]}</div><h3>${p[0]}</h3><div class="st">${CS.map((c,k)=>`<span><b>${c[i]}</b>${LB[k]}</span>`).join("")}</div><div class="gm">#${i+1} · ${p[3]} buts · ${p[2]} matchs</div></div></div>`}).join("");
+// ---- Pages ----
+const PN=P.map(p=>p[0]);
+const gl=s=>Object.fromEntries(s.split(",").map(x=>{const m=x.match(/^(.*?)(\d+)$/);return[m[1],+m[2]]}));
+const MM=M.map(m=>({j:m[0],w:m[2]>m[3],F:gl(m[4]),R:gl(m[5])})).reverse();
+const H={};
+P.forEach(p=>{const t=p[1],o=t=="F"?"R":"F",tm={},op={};
+MM.forEach(m=>{if(!(p[0] in m[t]))return;const won=t=="F"?m.w:!m.w;
+for(const y in m[t])if(y!=p[0]){(tm[y]=tm[y]||[0,0]);tm[y][0]++;tm[y][1]+=won}
+for(const y in m[o]){(op[y]=op[y]||[0,0]);op[y][0]++;op[y][1]+=won}});
+const pick=(o,dir)=>{let b=null;for(const y in o){const [n,w]=o[y];if(n<2)continue;const r=w/n;if(!b||(dir*(r-b.r)>0)||(r==b.r&&n>b.n))b={y,n,w,r}}return b};
+H[p[0]]={a:pick(tm,1),b:pick(op,-1)}});
+$("st").innerHTML=P.map(p=>{const h=H[p[0]],f=(b,t)=>b?`<b>${b.y}</b> · ${b.w}/${b.n} ${t}`:"pas assez de matchs";
+return `<div class="card"><h3>${p[0]} <span class="tag ${p[1]}">${T[p[1]]}</span></h3><div class="l">🤝 Meilleur coéquipier<br>${f(h.a,"victoires")}</div><div class="l">⚔️ Meilleur adversaire<br>${f(h.b,"victoires du joueur")}</div></div>`}).join("");
+const Q={Taktak:"Je ne fais pas des passes, je fais des statistiques.",Mika:"Mes buts comptent double, mes défaites aussi, mais on n'en parle pas.",Kevin:"11 buts en un match ? J'étais juste en échauffement.",Omar:"Je marque, l'équipe perd. Je ne vois pas le rapport.",Nass:"Discret mais toujours là, comme les factures.",Fou:"On m'appelle Fou parce que je tente tout, même ce qui marche.",Alex:"Je cours vite, le ballon aussi : on se croise rarement.",Karim:"Peu de matchs, beaucoup d'effet. L'artiste ne se montre pas tous les vendredis.",Mouss:"Je suis là pour l'ambiance, les buts sont un bonus.",Mehdi:"Un vendredi sur deux, c'est déjà trop beau pour être vrai.",Hamza:"Je défends tellement bien que l'attaque n'a pas besoin de moi.",Dylan:"2 matchs, 16 buts. Les maths, c'est pas mon truc ; le but, si.",Issam:"Une équipe qui gagne a besoin de tout le monde. Surtout de moi.",Mustapha:"3 matchs, 13 buts, et personne ne m'a revu. Mystère.",Ouanis:"8 buts pour mon premier match. On peut prendre sa retraite dès la J12 ?",Miguel:"Je suis venu, j'ai vu, j'ai perdu deux fois.",Moha:"Mon ELO est stable, comme mon niveau.",Nadir:"6 buts, une victoire, au revoir. Micro lâché.",Yacine:"85 en défense, mais attaquant dans l'âme.",Fabien:"Mon seul match, mes quatre buts. Le reste, c'est du bruit.","Mehdi DZ":"Je ne suis pas l'autre Mehdi. Le meilleur, c'est moi.",Julio:"Trois buts, une victoire, zéro regret.",Jeremy:"Je progresse de match en match. Surtout en arrivant à l'heure.",Nicolas:"Un but. Mais quel but.",Ryad:"Mon but a failli changer l'histoire. Presque.",Invité:"Je ne suis qu'un invité, mais le ballon m'a quand même snobé."};
+$("cf").innerHTML=P.map(p=>`<div class="card"><h3>${p[0]} <span class="tag ${p[1]}">${T[p[1]]}</span></h3><div class="q">« ${Q[p[0]]||"Pas encore de déclaration."} »</div></div>`).join("");
+const opt=(x)=>x+PN.map(n=>`<option>${n}</option>`).join("");
+$("pa").innerHTML=opt("");$("pb").innerHTML=opt('<option value="">— comparer —</option>');
+$("pa").value="Taktak";$("pb").value="Mika";
+function ser(n){let c=0;return MM.map(m=>c+=(m["F"][n]||m["R"][n]||0))}
+function draw(){const cols=["var(--ac)","var(--rd)"],S=[$("pa").value,$("pb").value].filter(Boolean).map(ser);
+const mx=Math.max(10,...S.map(s=>s[s.length-1])),X=j=>40+j*(540/Math.max(1,M.length-1)),Y=v=>230-v/mx*200;let h="";
+for(let i=0;i<=4;i++){const v=Math.round(mx*i/4);h+=`<line x1="40" x2="580" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--bd)"/><text x="34" y="${Y(v)+4}" text-anchor="end">${v}</text>`}
+for(let j=0;j<M.length;j++)h+=`<text x="${X(j)}" y="250" text-anchor="middle">J${j+1}</text>`;
+S.forEach((s,k)=>{h+=`<polyline fill="none" stroke="${cols[k]}" stroke-width="2.5" points="${s.map((v,j)=>X(j)+","+Y(v)).join(" ")}"/>`+s.map((v,j)=>`<circle cx="${X(j)}" cy="${Y(v)}" r="3.5" fill="${cols[k]}"><title>J${j+1} : ${v} buts</title></circle>`).join("")});
+$("ch").innerHTML=h;
+$("pn").textContent=[$("pa").value,$("pb").value].filter(Boolean).map(n=>{const s=ser(n);return n+" : "+s[s.length-1]+" buts"}).join(" · ")}
+$("pa").onchange=$("pb").onchange=draw;
+function route(){const PG=["classements","stats","conf","performances","admin"];let h=location.hash.slice(1);if(!PG.includes(h)||(h=="admin"&&$("na").hidden))h="classements";
+PG.forEach(k=>$("pg-"+k).hidden=k!=h);
+document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.p==h));if(h=="performances")draw();scrollTo(0,0)}
+const CH=[...M].reverse(),RS=CH.map(m=>m[2]>m[3]);let EF=1000,ER=1000;
+RS.forEach(w=>{const e=1/(1+Math.pow(10,(ER-EF)/400)),d=32*((w?1:0)-e);EF+=d;ER-=d});
+const sg=a=>{let k=0;while(k<a.length&&a[a.length-1-k]==a[a.length-1])k++;return k};
+const blk=a=>{const l=a[a.length-1],k=sg(a);return form(a.slice(-4).join(""))+` <span class="d">${k} ${l=="V"?"victoire":"défaite"}${k>1?"s":""} de suite</span>`};
+const gs=t=>P.filter(p=>p[1]==t).reduce((a,p)=>a+p[3],0),ws=RS.filter(Boolean).length,dd=v=>(v>0?"+":"")+v+" pts";
+$("ff").innerHTML=blk(RS.map(w=>w?"V":"D"));$("fr").innerHTML=blk(RS.map(w=>w?"D":"V"));
+$("ef").textContent=Math.round(EF);$("er").textContent=Math.round(ER);$("edf").textContent=dd(Math.round(EF)-1000);$("edr").textContent=dd(Math.round(ER)-1000);
+$("bf").textContent=gs("F");$("br").textContent=gs("R");$("vf").textContent=ws;$("df").textContent=RS.length-ws;$("vr").textContent=RS.length-ws;$("dr").textContent=ws;
+$("nm").textContent=M.length;$("lj").textContent=M[0][0];$("lsc").textContent=M[0][2]+" — "+M[0][3];$("lead").textContent=P[0][0]+" mène avec "+P[0][3]+" buts";
+// ---- Admin (propriétaire / éditeurs uniquement) ----
+(async()=>{try{
+if(!window.claude)return;
+const u=await claude.use("user"),A=await claude.use("artifact");
+if(!u||!A||!u.canEdit())return;
+$("na").hidden=false;route();
+$("dl").innerHTML=P.map(p=>`<option value="${p[0]}">`).join("");
+const msg=t=>$("am").textContent=t;
+const row=t=>{const d=document.createElement("div");d.className="rw";d.innerHTML='<input list="dl" placeholder="Joueur"><input type="number" min="0" placeholder="Buts">';$("r"+t).appendChild(d)};
+for(let i=0;i<5;i++){row("f");row("r")}
+document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>row(b.dataset.t));
+$("aj").value=M[0][0]+1;
+const rd=t=>[...$("r"+t).children].map(d=>{const i=d.querySelectorAll("input");return[i[0].value.trim().replace(/[,\d]/g,""),Math.max(0,parseInt(i[1].value)||0)]}).filter(x=>x[0]);
+const sum=l=>l.reduce((a,x)=>a+x[1],0);
+const pub=async()=>{msg("Publication…");const c=document.documentElement.cloneNode(true);
+c.querySelector("#data").textContent=JSON.stringify(D).replace(/</g,"\\u003c");
+["sc","cnt","ms","cd","st","cf","pa","pb","ch","pn","ff","fr","rf","rr","dl"].forEach(i=>c.querySelector("#"+i).innerHTML="");
+c.querySelector("#na").setAttribute("hidden","");
+c.querySelectorAll("[id^=pg-]").forEach(e=>e.id=="pg-classements"?e.removeAttribute("hidden"):e.setAttribute("hidden",""));
+try{await A.publish("<!DOCTYPE html>"+c.outerHTML)}catch(e){msg("Échec : "+(e.code||e.message))}};
+$("sv").onclick=async()=>{const lf=rd("f"),lr=rd("r");
+if(!lf.length||!lr.length)return msg("Ajoute des joueurs dans chaque équipe.");
+for(const[t,l]of[["F",lf],["R",lr]])for(const[n]of l){const p=P.find(x=>x[0]==n);if(p&&p[1]!=t)return msg(n+" est dans l'autre équipe.")}
+const nm=[...lf,...lr].map(x=>x[0]);if(new Set(nm).size<nm.length)return msg("Joueur en double.");
+const sf=$("asf").value===""?sum(lf):+$("asf").value,sr=$("asr").value===""?sum(lr):+$("asr").value;
+if(sf==sr)return msg("Les scores doivent être différents.");
+const j=+$("aj").value||M[0][0]+1,gw=32*(1-1/(1+Math.pow(10,(sf>sr?ER-EF:EF-ER)/400)));
+D.prev=JSON.parse(JSON.stringify(P));
+const up=(l,t,w)=>l.forEach(([n,g])=>{let p=P.find(x=>x[0]==n);if(!p){p=[n,t,0,0,1000,"",0,[60,58,55,47,57,48]];P.push(p)}const a=p[2]?p[3]/p[2]:0;p[4]=Math.round(p[4]+5.4*(g-.65*a)+(w?gw:0));p[2]++;p[3]+=g;const c=w?"V":"D";p[6]=p[5].slice(-1)==c?p[6]+1:1;p[5]=(p[5]+c).slice(-4)});
+up(lf,"F",sf>sr);up(lr,"R",sr>sf);
+const fm=l=>l.sort((a,b)=>b[1]-a[1]).map(x=>x.join("")).join(",");
+D.matches.unshift([j,$("ad").value.trim(),sf,sr,fm(lf),fm(lr)]);await pub()};
+$("un").onclick=async()=>{if(!D.prev)return msg("Aucun match à annuler.");D.players=D.prev;D.prev=null;D.matches.shift();await pub()};
+}catch(e){}})();
+addEventListener("hashchange",route);route();
+</script></body></html>
